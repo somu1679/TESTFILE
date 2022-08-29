@@ -16,7 +16,7 @@ pipeline {
                if ( "1" == "1" ) {
                    sh 'rm -rf branch'
                    sh 'echo "${GIT_BRANCH}" >> branch'
-                   sh 'bran=$(awk -F/ '{print $1}' branch)'
+                   sh '''gitbranch=$(cat branch | awk -F/ '{print $1}')'''
                    sh 'echo ${branch}'
                dir("${WORKSPACE}/somu") {
                    
