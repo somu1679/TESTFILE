@@ -14,7 +14,9 @@ pipeline {
             steps {
                 script {
                if ( "1" == "1" ) {
-                   sh '''BRANCH=${GIT_BRANCH} | cut -d'/' -f1'''
+                   sh '''
+                   BRANCH=${GIT_BRANCH} | cut -d'/' -f1
+                   '''
                    sh 'echo ${BRANCH}'
                dir("${WORKSPACE}/somu") {
                    
