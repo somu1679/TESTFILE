@@ -1,10 +1,6 @@
 pipeline {
     agent any
-    
-    environment {
-    GIT_BRANCH = "${GIT_BRANCH}".split('/')[1]
-    }
-
+ 
     stages {
         stage('Git_checkout') {
             steps {
@@ -19,7 +15,8 @@ pipeline {
                 script {
                if ( "1" == "1" ) {
                dir("${WORKSPACE}/somu") {
-                   sh 'echo ${GIT_BRANCH}'
+                   sh "BRANCH="${GIT_BRANCH}".split('/')[1]"
+                   sh 'echo ${BRANCH}'
                    sh 'sudo cp main.tf ${WORKSPACE}'
                }
                }else {
