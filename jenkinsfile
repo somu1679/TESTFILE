@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                if ( "1" == "1" ) {
-                  def BRANCH = sh(script: '''BRANCH=$(${GIT_BRANCH} | cut -d'/' -f1)''', returnStdout: true)
+                  def BRANCH = sh(script: '''BRANCH=$(${GIT_BRANCH}.trim[1]''', returnStdout: true)
                    sh 'echo ${BRANCH}'
                dir("${WORKSPACE}/somu") {
                    
