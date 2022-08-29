@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+
+    stages {
+        stage('Git_checkout') {
+            steps {
+               
+                git 'https://github.com/somu1679/terraformsomu.git'
+
+            }
+
+        }
+    stage('Copy files to tmp folder') {
+            steps {
+                script {
+               if ( "1" == "1" ) {
+               dir("${WORKSPACE}/somu") {
+                   sh 'echo ${env.GIT_BRANCH}'
+                   sh 'sudo cp main.tf ${WORKSPACE}'
+               }
+               }else {
+                   echo "files added"
+
+        }
+               }
+                }
+            }
+    }
+}
