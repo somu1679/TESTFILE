@@ -16,8 +16,8 @@ pipeline {
                if ( "1" == "1" ) {
                    sh 'rm -rf branch'
                    sh 'echo "${GIT_BRANCH}" >> branch'
-                   sh '''gitbranch=$(cat branch | awk -F/ '{print $1}')'''
-                   sh 'echo ${branch}'
+                   sh '''gitbranch=$(cat branch | awk -F/ '{print $2}')'''
+                   sh 'echo ${gitbranch}'
                dir("${WORKSPACE}/somu") {
                    
                    sh 'sudo cp main.tf ${WORKSPACE}'
