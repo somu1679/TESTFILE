@@ -33,6 +33,7 @@ pipeline {
                VAR=$(awk '/EXPOSE /{print $NF}' Dockerfile)
                echo $VAR
                '''
+               sh 'echo $VAR'
                }
                }
                }
