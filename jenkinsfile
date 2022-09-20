@@ -11,11 +11,15 @@ pipeline {
                                 defaultValue: false, 
                                 description: '', 
                                 name: 'BOOLEAN',
-                                script: '''
+                                script: [
+                                                classpath: [], 
+                                                sandbox: false,
+                                                script: '''
                                                 if (params.BOOLEAN){
                                                     return["ami-sd2345sd", "ami-asdf245sdf", "ami-asdf3245sd"]
                                                     }
                                                     '''
+                                                    ]
                             )])
                             ])
                             }
