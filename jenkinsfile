@@ -23,8 +23,10 @@ pipeline {
                             }
        stage('Testing stage') {
             steps {
+            script {
                if (params.BOOLEAN == true) {
                echo "params.scan_type"
+               }
                }
                }
 
