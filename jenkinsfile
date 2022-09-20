@@ -10,7 +10,18 @@ pipeline {
                             booleanParam(
                                 defaultValue: true, 
                                 description: '', 
-                                name: 'BOOLEAN'
+                                name: 'BOOLEAN',
+                                script: [
+                                            script: '''
+                                                    if(params.BOOLEAN){
+                                                        properties([
+                              parameters([
+                              choice(
+                                choices: ['ONE', 'TWO'], 
+                                name: 'PARAMETER_01'
+                            )
+                            }'''
+                            ]
                             )])
                             ])
                             }
