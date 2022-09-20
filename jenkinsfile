@@ -11,15 +11,21 @@ pipeline {
                                 defaultValue: false, 
                                 description: '', 
                                 name: 'BOOLEAN',
-                                script: [
+                            [$class: 'CascadeChoiceParameter', 
+                                    choiceType: 'PT_SINGLE_SELECT', 
+                                    description: 'Select the AMI from the Dropdown List',
+                                    name: 'AMI List', 
+                                    referencedParameters: 'BOOLEAN',
+                                    script: [
                                                 classpath: [], 
-                                                sandbox: false,
+                                                sandbox: false, 
                                                 script: '''
                                                 if (params.BOOLEAN){
                                                     return["ami-sd2345sd", "ami-asdf245sdf", "ami-asdf3245sd"]
-                                                    }
-                                                    '''
-                                                    ]
+                                                }
+                                                '''
+                                                ]
+                                                ]
                             )])
                             ])
                             }
