@@ -23,10 +23,6 @@ pipeline {
                             }
                             }
        stage('Testing stage') {
-       
-         environment {
-                PORT = ""
-            }
             steps {
             script {
                if (params.ZAP_TESTING == true) {
@@ -35,7 +31,7 @@ pipeline {
                sh "docker images"
                def PORT= sh(  returnStdout: true, script: 'awk "/EXPOSE /{print $NF}" Dockerfile' )
                env.ACC =  PORT
-               sh 'echo ${PORT}'
+               sh 'echo ${ACC}'
                }
                }
                }
