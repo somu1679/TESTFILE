@@ -2,6 +2,16 @@ pipeline {
     agent any
  
     stages {
+        stage('Parameters'){
+                steps {
+                    script {
+                    properties([
+                            parameters([
+                               booleanParam(
+                                defaultValue: true, 
+                                description: 'Please tik the mark for further', 
+                                name: 'BOOLEAN'
+                            ))])}}}
         stage('Git_checkout') {
             steps {
                
