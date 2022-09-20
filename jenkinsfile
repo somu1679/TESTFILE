@@ -40,7 +40,7 @@ pipeline {
                def PORT= sh(  returnStdout: true, script: 'VAR=$(awk '/EXPOSE /{print $NF}' Dockerfile)')
                env.ACC =  PORT
                '''
-               sh 'echo ${ACC}
+               sh 'echo ${ACC}'
                }
                }
                }
