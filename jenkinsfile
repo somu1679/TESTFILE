@@ -8,20 +8,15 @@ pipeline {
                     properties([
                         parameters([
                             booleanParam(
-                                defaultValue: true, 
+                                defaultValue: false, 
                                 description: '', 
                                 name: 'BOOLEAN',
                                 script: [
-                                            script: '''
-                                                    if(params.BOOLEAN){
-                                                        properties([
-                              parameters([
-                              choice(
-                                choices: ['ONE', 'TWO'], 
-                                name: 'PARAMETER_01'
-                            )
-                            }'''
-                            ]
+                                            classpath: [], 
+                                            sandbox: false, 
+                                            script: 
+                                                "return['dev','stage','prod']"
+                                        ]
                             )])
                             ])
                             }
