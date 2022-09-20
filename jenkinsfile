@@ -12,7 +12,7 @@ pipeline {
                                 description: 'Tik the box if you start the testing', 
                                 name: 'BOOLEAN'),
                             choice(
-                                choices: ['Baseline', 'Fullscan'], 
+                                choices: ['', 'Baseline', 'Fullscan'], 
                                 name: 'scan_type'
                                 
                             )
