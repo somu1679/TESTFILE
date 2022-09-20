@@ -27,6 +27,8 @@ pipeline {
             script {
                if (params.OWASP_testing == true) {
                echo params.scan_type
+               sh "docker build -t somu1996/nginx:v${BUILD_NUMBER} ."
+               sh "docker images"
                }
                }
                }
