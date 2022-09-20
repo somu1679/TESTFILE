@@ -6,11 +6,7 @@ pipeline {
             steps {
                 script { 
                     properties([
-                        parameters([
-                            booleanParam(
-                                defaultValue: true, 
-                                description: '', 
-                                name: 'BOOLEAN',
+                        parameters(
                                 [[$class: 'ChoiceParameter', 
                                     choiceType: 'PT_SINGLE_SELECT', 
                                     description: 'Would you want to start the testing stage', 
@@ -55,7 +51,7 @@ pipeline {
                                                 '''
                                             ] 
                                     ]
-                                ]]
+                                ]
                             )])
                             ])
                             }
