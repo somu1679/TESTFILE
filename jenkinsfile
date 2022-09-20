@@ -10,9 +10,10 @@ pipeline {
                             booleanParam(
                                 defaultValue: false, 
                                 description: 'Tik the box if you start the testing', 
-                                name: 'BOOLEAN'),
+                                name: 'OWASP_testing'),
                             choice(
-                                choices: ['', 'Baseline', 'Fullscan'], 
+                                choices: ['Baseline', 'Fullscan'],
+                                description: 'Must and Should select the Scan Type if you tik the Testing, By default the baseline scan is selected',
                                 name: 'scan_type'
                                 
                             )
@@ -24,7 +25,7 @@ pipeline {
        stage('Testing stage') {
             steps {
             script {
-               if (params.BOOLEAN == true) {
+               if (params.OWASP_testing == true) {
                echo params.scan_type
                }
                }
