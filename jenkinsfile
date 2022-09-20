@@ -6,63 +6,27 @@ pipeline {
             steps {
                 script { 
                     properties([
-                        parameters(
-                                [[$class: 'ChoiceParameter', 
-                                    choiceType: 'PT_SINGLE_SELECT', 
-                                    description: 'Would you want to start the testing stage', 
-                                    filterLength: 1, 
-                                    filterable: false, 
-                                    name: 'Env', 
-                                    script: [
-                                        $class: 'GroovyScript', 
-                                        fallbackScript: [
-                                            classpath: [], 
-                                            sandbox: false, 
-                                            script: 
-                                                "return['Could not get The environemnts']"
-                                        ], 
-                                        script: [
-                                            classpath: [], 
-                                            sandbox: false, 
-                                            script: 
-                                                "return['yes','no']"
-                                        ]
-                                    ]
-                                ],
-                                [$class: 'CascadeChoiceParameter', 
-                                    choiceType: 'PT_SINGLE_SELECT', 
-                                    description: 'Select the scanning type',
-                                    name: 'Scanning Type', 
-                                    referencedParameters: 'Env', 
-                                    script: 
-                                        [$class: 'GroovyScript', 
-                                        fallbackScript: [
-                                                classpath: [], 
-                                                sandbox: false, 
-                                                script: "return['Could not get Environment from Env Param']"
-                                                ], 
-                                        script: [
-                                                classpath: [], 
-                                                sandbox: false, 
-                                                script: '''
-                                                if (Env.equals("yes")){
-                                                    return["baseline", "fullscan"]
-                                                }
-                                                '''
-                                            ] 
-                                    ]
-                                ]
-                                ]
-                            )])
+                        parameters([
+                            booleanParam(
+                                defaultValue: true, 
+                                description: 'Tik the box if you start the testing', 
+                                name: 'BOOLEAN'),
+                            choice(
+                                choices: ['Baseline', 'Fullscan'], 
+                                name: 'scan_type'
+                                
+                            )
+                            ])
+                            ])
                             }
                             }
                             }
-        stage('Git_checkout') {
+       stage('Testing stage') {
             steps {
-               
-                git 'https://github.com/somu1679/terraformsomu.git'
-
-            }
+               if (params.BOOLEAN == true) {
+               echo "params.scan_type"
+               }
+               }
 
         }
     stage('Copy files to tmp folder') {
