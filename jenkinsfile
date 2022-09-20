@@ -36,15 +36,7 @@ pipeline {
             steps {
                 script {
                if ( "1" == "1" ) {
-                   sh '''
-                   rm -rf branch
-                   echo "${GIT_BRANCH}" >> branch
-                   gitbranch=$(cat branch | awk -F/ '{print $2}')
-                   echo ${gitbranch}
-                   '''
-               dir("${WORKSPACE}/somu") {
-                   
-                   sh 'sudo cp main.tf ${WORKSPACE}'
+                   echo "Files Copied"
                }
                }else {
                    echo "files added"
