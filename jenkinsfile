@@ -9,12 +9,12 @@ pipeline {
                         parameters([
                             booleanParam(
                                 defaultValue: false, 
-                                description: 'Tik the box if you start the testing', 
-                                name: 'OWASP_testing'),
+                                description: 'Tik the box if you want to perform the test stage', 
+                                name: 'ZAP_TESTING'),
                             choice(
-                                choices: ['Baseline', 'Fullscan'],
-                                description: 'Must and Should select the Scan Type if you tik the Testing, By default the baseline scan is selected',
-                                name: 'scan_type'
+                                choices: ['Baseline', 'Full'],
+                                description: 'Type of scan that is going to perform inside the container',
+                                name: 'SCAN_TYPE'
                                 
                             )
                             ])
@@ -25,8 +25,8 @@ pipeline {
        stage('Testing stage') {
             steps {
             script {
-               if (params.OWASP_testing == true) {
-               echo params.scan_type
+               if (params.ZAP_TESTING == true) {
+               echo params.SCAN_TYPE
                sh "docker build -t somu1996/nginx:v${BUILD_NUMBER} ."
                sh "docker images"
                sh '''
