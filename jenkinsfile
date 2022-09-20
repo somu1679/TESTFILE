@@ -24,13 +24,11 @@ pipeline {
                             }
        stage('Testing stage') {
             steps {
-            script {
                sh "docker build -t somu1996/nginx:v${BUILD_NUMBER} ."
                sh "docker images"
                def PORT= sh(  returnStdout: true, script: '''awk '/EXPOSE /{print $NF}' Dockerfile''' )
                env.PORT =  PORT
                sh 'echo ${PORT}'
-               }
                }
 
         }
