@@ -31,9 +31,10 @@ pipeline {
                sh "docker images"
                sh '''
                VAR=$(awk '/EXPOSE /{print $NF}' Dockerfile)
+               env.PORT = "$VAR"
                echo $VAR
                '''
-               sh 'echo $VAR'
+               sh 'echo ${env.PORT}'
                }
                }
                }
