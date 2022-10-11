@@ -2,8 +2,9 @@
   "scanSettings": {
     "configMode": "AUTO",
     "configExternalURL": "",
-    "baseBranches": [],
-    "enableLicenseViolations": "true"
+    "projectToken": "",
+    "enableSAST": "true",
+    "baseBranches": []
   },
   "checkRunSettings": {
     "vulnerableCheckRunConclusionLevel": "failure",
@@ -12,8 +13,11 @@
   "issueSettings": {
     "minSeverityLevel": "LOW"
   },
-    "remediateSettings": {
-      "enableRenovate": true
-      "extends": ["github>whitesource/merge-confidence:beta"]
-    }
+  "remediateSettings": {
+    "workflowRules": {
+      "enabled": true,
+      "minVulnerabilitySeverity": "LOW"
+    },
+    "enableRenovate": true
+  }
 }
